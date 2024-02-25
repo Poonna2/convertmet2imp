@@ -15,19 +15,19 @@
         $InputUnit = $_POST["InputUnit"];
         $InputValue = floatval($_POST["InputValue"]);
         $OutputUnit = $_POST["OutputUnit"];
-        $Result = $InputValue;
     
+        //แปลงค่าที่รับมาเป็นหน่วยเมตร
         if ($InputUnit == "mm")     {$Convert2Meters = $InputValue/1000;    $ShowInputUnit ="มิลลิเมตร";}
         elseif ($InputUnit == "cm") {$Convert2Meters = $InputValue/100;     $ShowInputUnit ="เซ็นติเมตร";}
         elseif ($InputUnit == "dm") {$Convert2Meters = $InputValue/10;      $ShowInputUnit ="เดซิเมตร";}
         elseif ($InputUnit == "m")  {$Convert2Meters = $InputValue;         $ShowInputUnit ="เมตร";}
         elseif ($InputUnit == "km") {$Convert2Meters = $InputValue*1000;    $ShowInputUnit ="กิโลเมตร";}
-        
         elseif ($InputUnit == "in") {$Convert2Meters = $InputValue / 3.28084 / 12;      $ShowInputUnit ="นิ้ว";}
         elseif ($InputUnit == "ft") {$Convert2Meters = $InputValue / 3.28084;           $ShowInputUnit ="ฟุต";}
         elseif ($InputUnit == "yd") {$Convert2Meters = $InputValue / 3.28084 * 3;       $ShowInputUnit ="หลา";}
         elseif ($InputUnit == "mi") {$Convert2Meters = $InputValue / 3.28084 * 5280;    $ShowInputUnit ="ไมล์";}
     
+        //แปลงจากหน่วยเมตรเป็นหน่วยอื่น
         $Millimeter = $Convert2Meters*1000;
         $Centimeter = $Convert2Meters*100;
         $Decimeter  = $Convert2Meters*10;
@@ -38,17 +38,18 @@
         $Yards      = $Feet / 3;
         $Miles      = $Yards / 1760;
     
+        //ส่งผลลัพธ์และหน่วยในปัจจุบัน
         if ($OutputUnit == "mm")        {$Result = $Millimeter;     $ShowOutputUnit ="มิลลิเมตร";}
         elseif ($OutputUnit == "cm")    {$Result = $Centimeter;     $ShowOutputUnit ="เซ็นติเมตร";}
         elseif ($OutputUnit == "dm")    {$Result = $Decimeter;      $ShowOutputUnit ="เดซิเมตร";}
         elseif ($OutputUnit == "m")     {$Result = $Meter;          $ShowOutputUnit ="เมตร";}
         elseif ($OutputUnit == "km")    {$Result = $Kilometer;      $ShowOutputUnit ="กิโลเมตร";}
-        
-        elseif ($OutputUnit == "in")    {$Result = $Inches; $ShowOutputUnit ="นิ้ว";}
-        elseif ($OutputUnit == "ft")    {$Result = $Feet;   $ShowOutputUnit ="ฟุต";}
-        elseif ($OutputUnit == "yd")    {$Result = $Yards;  $ShowOutputUnit ="หลา";}
-        elseif ($OutputUnit == "mi")    {$Result = $Miles;  $ShowOutputUnit ="ไมล์";}
+        elseif ($OutputUnit == "in")    {$Result = $Inches;     $ShowOutputUnit ="นิ้ว";}
+        elseif ($OutputUnit == "ft")    {$Result = $Feet;       $ShowOutputUnit ="ฟุต";}
+        elseif ($OutputUnit == "yd")    {$Result = $Yards;      $ShowOutputUnit ="หลา";}
+        elseif ($OutputUnit == "mi")    {$Result = $Miles;      $ShowOutputUnit ="ไมล์";}
     
+        //เรียงลำดับข้อความที่จะแสดงเป็นผลลัพธ์
         $Showtext = $InputValue;
         $Showtext .= " ";
         $Showtext .= $ShowInputUnit;
@@ -57,6 +58,7 @@
         $Showtext .= " ";
         $Showtext .= $ShowOutputUnit;
 
+        //กรณีที่ไม่ได้กรอกตัวเลขใด ๆ หรือกรอกเลข 0
         if($Result==0){$Showtext = "กรุณากรอกค่าที่ต้องการแปลง";}
     }
 ?>
