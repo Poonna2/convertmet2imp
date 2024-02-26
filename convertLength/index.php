@@ -92,7 +92,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputValue"><h4>ป้อนค่าที่ต้องการ</h4></label>
-                        <input type="number" min="0.00001" step="0.00001" class="form-control" id="InputValue" name="InputValue" 
+                        <input type="number" step="0.00001" class="form-control" id="InputValue" name="InputValue" 
                         value="<?php echo $InputValue; ?>">
                     </div>
                     <div class="form-group">
